@@ -55,7 +55,7 @@ I used split to remove the hypen and took the mean of the two numbers. To romve 
 ## The Logistic Regression steps
 
 ### Splitting the data
-I used the train, test, split to seperate the data into training and seting sets.
+I used the train, test, split to seperate the data into training and testing sets.
 I set the test size to 0.2 and the random state to 42.
 
 ### Scaling
@@ -112,18 +112,11 @@ Weighted Avg: This takes the average for each class weighted by the number of sa
 
 
 
-
-
-
-
-
-
-
 ![Confusion Matrix](image.png)
 
 ![ROC Curve](image-1.png)
 
-
+![Histogram of Relavant Columns](image.png)
 
 
 
