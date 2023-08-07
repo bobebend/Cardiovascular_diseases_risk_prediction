@@ -9,6 +9,8 @@ Eating healthy has long been linked with a reduction in various ailments. With t
 # The Data
 The dataset use contained 308,854 rows with 19 columns. 
 
+There were 80 duplicate row. I chose to leave the duplicates in since many of the columns were yes/no or some type of answer with a limited range. I expected by chance some of the rows would be the same, and they were.
+
 The columns are labeled as:
 General_Health, Checkup, Exercise, Heart_Disease, Skin_Cancer, Other_Cancer, Depression, Diabetes, Arthritis, Sex, Age_Category, Height(cm), Weight(kg), BMI, Smoking_History, Alcohol_Consumption, Fruit_Consumption, Green_Vegatable_Consumption, and FriedPotato_Consumption
 
@@ -42,7 +44,60 @@ With these results I rejected my Null Hypothesis and accepted my Alternate Hypth
 # Logistic Regression
 I chose Logistic regression due to Heart Disease being yes/no (binary) instead of continuous.
 
-## 
+## How I changed the data
+I started with 12 object columns and 7 float columns. I needed to change the types to something more useful.
+-I started by changing the Sex column to binary with yes=1 and no-0. 
+-Next, I changed the columns General Health , Diabetes, and Checkup from object to binary columns with get-dummies.
+-The Age_Category contained two, two digit ages seperated by a hypen, and the oldest age as 80+.
+I used split to remove the hypen and took the mean of the two numbers. To romve the + from 80 and best guess for ages in the survey over 80, I put the highest age as 85.
+-This left me with integers and floats I could use.
+
+## The Logistic Regression steps
+
+### Splitting the data
+I used the train, test, split to seperate the data into training and seting sets.
+I set the test size to 0.2 and the random state to 42.
+
+### Scaling
+The X_train was scaled, fitted to the model.
+The X_test was scaled only.
+
+### The Regression
+I used the Logistic Regression with a random state of 42 using the default threshold of 0.5
+
+### Cross-validation
+Cross validation was used with 10 K-Folds to train the testing model. Scoring used the 
+Receiver Operating Characteristic - Area Under Curve (roc-auc) to evaluate the models performance.
+
+### ROC-AUC
+the roc-auc scores were then averaged
+
+### Prediction
+The prediction was then run against the test model
+
+# Results of the Logistic Regression
+ROC-AUC scores for each fold:
+[0.83581631 0.83996173 0.84231169 0.83711969 0.83089107 0.83413619
+ 0.83713457 0.8360213  0.82781566 0.82695681]
+
+Average ROC-AUC: 0.83 (±0.00)
+
+ROC-AUC on Testing Data: 0.84
+
+Classification Report on Testing Data:
+              precision    recall  f1-score   support
+
+           0       0.92      0.99      0.96     56774
+           1       0.50      0.07      0.12      4997
+
+    accuracy                           0.92     61771
+   macro avg       0.71      0.53      0.54     61771
+weighted avg       0.89      0.92      0.89     61771
+
+![Confusion Matrix](image.png)
+
+![ROC Curve](image-1.png)
+
 
 
 
