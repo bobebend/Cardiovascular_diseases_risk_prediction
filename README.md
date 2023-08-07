@@ -94,6 +94,31 @@ Classification Report on Testing Data:
    macro avg       0.71      0.53      0.54     61771
 weighted avg       0.89      0.92      0.89     61771
 
+## Let's Breakdown the Results
+ROC-AUC on Testing Data: 0.84 is the estimate of the model's performance on unseen data or the test set. This model is able to clearly distinguish between Heart Disease = 1 (positive) and Heart Disease = 0 (negative).
+
+### Classification Data
+Precision: is the model's ability to correctly predict positives for Heart Disease (= 1) among the true positive cases. This model only predicts 50% of the predicted positives are true positive. Conversely, 92% of predicted negatives are true negatives.
+
+Recall: 0.07 for positive rates indicates this model is only correctly identifying 7% of the actual positive instances.
+
+F1-Score: Is the harmonic mean of precission and recall. This indicates a 12% accuracy for HEart Disease positive cases and a 96% accuracy for negative cases.
+
+Support: This is the number of samples in each class in the testing data. 
+
+Macro Avg: Takes the average for each class without considering the class imbalance.
+
+Weighted Avg: This takes the average for each class weighted by the number of samples in each class.
+
+
+
+
+
+
+
+
+
+
 ![Confusion Matrix](image.png)
 
 ![ROC Curve](image-1.png)
