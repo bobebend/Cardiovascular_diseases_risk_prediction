@@ -16,7 +16,8 @@ General_Health, Checkup, Exercise, Heart_Disease, Skin_Cancer, Other_Cancer, Dep
 
 The columns of interest in this research are: Heart_Disease, Alcohol_Consumption, Fruit_Consumption, Green_Vegatable_Consumption, and FriedPotato_Consumption
 
-This data was originally taken from a much larger dataset with 304 columns. The original source of the data is from the Behavioral Risk Factor Surveillance System (BRFSS) operated by the CDC. The BRFSS is a nationwide telephone survey "that collect state data about U.S. residents regarding their health-related risk behaviors, chronic health conditions, and use of preventive services." From the BRFSS data, the author "hand-picked 19 variables the relates to lifestyle factors of a person that can be contributed to being at risk with any form of Cardiovasular Diseases."
+Below is a graph of the features of interest.
+![Histogram of Relavant Columns](images/HistographHypoth.png)
 
 
 # Hypothesis Test
@@ -110,9 +111,9 @@ Weighted Avg: This takes the average for each class weighted by the number of sa
 
 ![Confusion Matrix](images/ConfusionMatrix.png)
 
-![ROC Curve](images\ROC_curve.png)
+![ROC Curve](images/ROC_curve.png)
 
-![Histogram of Relavant Columns](images\HistographHypoth.png)
+![Histogram of Relavant Columns](images/HistographHypoth.png)
 
 
 
