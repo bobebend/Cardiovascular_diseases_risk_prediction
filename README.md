@@ -9,7 +9,7 @@ Eating healthy has long been linked with a reduction in various ailments. With t
 # The Data
 The dataset use contained 308,854 rows with 19 columns. 
 
-There were 80 duplicate row. I chose to leave the duplicates in since many of the columns were yes/no or some type of answer with a limited range. I expected by chance some of the rows would be the same, and they were.
+There were 80 duplicate row. I chose to leave the duplicates in since many of the columns were yes/no or some type of answer with a limited range. I expected by chance some of the rows would be the same, and a few were.
 
 The columns are labeled as:
 General_Health, Checkup, Exercise, Heart_Disease, Skin_Cancer, Other_Cancer, Depression, Diabetes, Arthritis, Sex, Age_Category, Height(cm), Weight(kg), BMI, Smoking_History, Alcohol_Consumption, Fruit_Consumption, Green_Vegatable_Consumption, and FriedPotato_Consumption
@@ -73,6 +73,33 @@ the roc-auc scores were then averaged
 The prediction was then run against the test model
 
 # Results of the Logistic Regression
+## The Confusion Matrix
+![Confusion Matrix](images/ConfusionMatrix.png)
+
+                   Predicted Positive    Predicted Negative
+Actual Positive         True Positive           False Negative
+Actual Negative         False Positive          True Negative
+
+I this case the Confusion Matrix breakdown explaination is as follows:
+
+Upper Left = 56443 (True - Negative) Instances correctly predicting Negative for Heart Disease
+
+Upper Right = 331 (False Positive) Instances of predicting Heart Disease when actually negative
+
+Lower Left = 4663 (False Negative) Instances of predicting no Heaart Disease when actually had Heart Disease
+
+Lower Right = 334 (True Positive) Instances correctly predicting Positive for Heart Disease
+
+
+
+
+
+
+
+
+## ROC Curve
+![ROC Curve](images/ROC_curve.png)
+
 ROC-AUC scores for each fold:
 [0.83581631 0.83996173 0.84231169 0.83711969 0.83089107 0.83413619
  0.83713457 0.8360213  0.82781566 0.82695681]
@@ -92,14 +119,14 @@ Classification Report on Testing Data:
 weighted avg       0.89      0.92      0.89     61771
 
 ## Let's Breakdown the Results
-ROC-AUC on Testing Data: 0.84 is the estimate of the model's performance on unseen data or the test set. This model is able to clearly distinguish between Heart Disease = 1 (positive) and Heart Disease = 0 (negative).
+ROC-AUC on Testing Data: 0.83 is the estimate of the model's performance on unseen data or the test set. This model is able to clearly distinguish between Heart Disease = 1 (positive) and Heart Disease = 0 (negative).
 
 ### Classification Data
 Precision: is the model's ability to correctly predict positives for Heart Disease (= 1) among the true positive cases. This model only predicts 50% of the predicted positives are true positive. Conversely, 92% of predicted negatives are true negatives.
 
 Recall: 0.07 for positive rates indicates this model is only correctly identifying 7% of the actual positive instances.
 
-F1-Score: Is the harmonic mean of precission and recall. This indicates a 12% accuracy for HEart Disease positive cases and a 96% accuracy for negative cases.
+F1-Score: Is the harmonic mean of precission and recall. This indicates a 12% accuracy for Heart Disease positive cases and a 96% accuracy for negative cases.
 
 Support: This is the number of samples in each class in the testing data. 
 
@@ -107,13 +134,14 @@ Macro Avg: Takes the average for each class without considering the class imbala
 
 Weighted Avg: This takes the average for each class weighted by the number of samples in each class.
 
+Remember, the ROC curve is an example of how well the model preformed regardless of the threshold set. In this case it performed well on testing data 84% of the time.
 
 
-![Confusion Matrix](images/ConfusionMatrix.png)
 
-![ROC Curve](images/ROC_curve.png)
 
-![Histogram of Relavant Columns](images/HistographHypoth.png)
+
+
+
 
 
 
