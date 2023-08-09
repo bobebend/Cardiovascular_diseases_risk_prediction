@@ -139,7 +139,7 @@ Remember, the ROC curve is an example of how well the model preformed regardless
 
 
 
-
+![Feature_Importance]images\Feature_Importance.png
 
 
 
