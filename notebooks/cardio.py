@@ -237,5 +237,6 @@ plt.legend(loc='lower right')
 plt.grid(True)
 plt.show()
 
-
+if __name__ == "__main__":
+    plt.show()
 
