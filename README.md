@@ -6,7 +6,7 @@ Dataset on Kaggle.com: https://www.kaggle.com/datasets/alphiree/cardiovascular-d
 # Why This Dataset
 Eating healthy has long been linked with a reduction in various ailments. With this dataset I was able to explore whether there is statistical significance between heart disease and Alcohol_Consumption, Fruit_Consumption, Green_Vegatable_Consumption, and FriedPotato_Consumption consuming certain foods. The food columns in the data encompass general categories of food, including alcohol, and are not intended to highlight any specific food or diet in particular. My goal is simply to determine if what is consumed has an impact on a person having heart disease.
 
-# The DataS
+# The Data
 The dataset use contained 308,854 rows with 19 columns. 
 
 There were 80 duplicate row. I chose to leave the duplicates in since many of the columns were yes/no or some type of answer with a limited range. I expected by chance some of the rows would be the same, and a few were.
@@ -14,7 +14,7 @@ There were 80 duplicate row. I chose to leave the duplicates in since many of th
 The columns are labeled as:
 General_Health, Checkup, Exercise, Heart_Disease, Skin_Cancer, Other_Cancer, Depression, Diabetes, Arthritis, Sex, Age_Category, Height(cm), Weight(kg), BMI, Smoking_History, Alcohol_Consumption, Fruit_Consumption, Green_Vegatable_Consumption, and FriedPotato_Consumption
 
-The columns of interest in this research are: Heart_Disease, Alcohol_Consumption, Fruit_Consumption, Green_Vegatable_Consumption, and FriedPotato_Consumption
+The columns of interest in this research are: Heart_Disease, Alcohol_Consumption, Fruit_Consumption, Green_Vegatable_Consumption, and FriedPotato_Consumption.
 
 Below is a graph of the features of interest.
 ![Histogram of Relavant Columns](images/HistographHypoth.png)
@@ -42,12 +42,19 @@ With these results I rejected my Null Hypothesis and accepted my Alternate Hypth
 I chose Logistic regression due to Heart Disease being yes/no (binary) instead of continuous.
 
 ## How I changed the data
-I started with 12 object columns and 7 float columns. I needed to change the types to something more useful.
--I started by changing the Sex column to binary with yes=1 and no-0. 
--Next, I changed the columns General Health , Diabetes, and Checkup from object to binary columns with get-dummies.
--The Age_Category contained two, two digit ages seperated by a hypen, and the oldest age as 80+.
-I used split to remove the hypen and took the mean of the two numbers. To romve the + from 80 and best guess for ages in the survey over 80, I put the highest age as 85.
--This left me with integers and floats I could use.
+I started with 12 object columns and 7 float columns. I needed to change the types to something more useful. Below are the steps I used in order/
+
+-Changed the Sex column to binary with yes=1 and no-0. 
+
+-Changed columns 'Heart_Disease', 'Exercise', 'Skin_Cancer', 'Other_Cancer', 'Depression', 'Arthritis', 'Smoking_History' which had yes/no data to 1=yes and 0=no 
+
+-Changed the columns 'General Health' , 'Diabetes', and 'Checkup' from object to binary columns with get-dummies.
+
+-The Age_Category contained two, two digit ages seperated by a hypen (70-74), and the oldest age as 80+.
+I used split to remove the hypen and took the mean of the two numbers. 
+--For to 80+ category I replaced it with a best guess average of 85 since there is no upper limit to the age category.
+
+-This left me a dataset which contained integers and floats..
 
 ## The Logistic Regression steps
 

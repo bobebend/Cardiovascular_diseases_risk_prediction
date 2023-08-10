@@ -90,13 +90,24 @@ result_df = pd.DataFrame(data, columns=columns)
 # Display the table
 print(result_df)
 
-''' 
-This is the beginning of the Logistic regression. I needed to really change the data 
-in the dataframe from catigorical to numerical
-'''
+# This is the beginning of the Logistic regression. I needed to really change the data 
+
+# in the dataframe from catigorical to numerical
+
 
 # Convert 'Female' and 'Male' in the 'Sex' column to 0 and 1, respectively
 cardio['Sex'] = cardio['Sex'].replace({'Female': 0, 'Male': 1})
+
+# Create new binary columns for 'Male' and 'Female'
+cardio['Male'] = (cardio['Sex'] == 1).astype(int)
+cardio['Female'] = (cardio['Sex'] == 0).astype(int)
+
+# Drop the original 'Sex' column
+cardio.drop(columns=['Sex'], inplace=True)
+
+# Verify the counts in 'Male' and 'Female' columns
+print(cardio['Male'].value_counts())
+print(cardio['Female'].value_counts())
 
 # Map binary categorical variables to 0 and 1
 binary_cols = ['Heart_Disease', 'Exercise', 'Skin_Cancer', 'Other_Cancer', 'Depression', 'Arthritis', 'Smoking_History']
@@ -117,12 +128,10 @@ for number in cardio['Age_Category']:
 
 # cardio = cardio.drop(columns = 'Age_Category')
 
-'''
+# Due to the last age group being 80+ with no upper limit I guessed and 
+# put the highest age at 85. This my impact things at the highest age range
 
-Due to the last age group being 80+ with no upper limit I guessed and 
 
-put the highest age at 85. This my impact things at the highest age range
-'''
 cardio['Average_Age'] = Average_Age
 cardio = cardio.drop(columns = 'Age_Category')
 
@@ -142,8 +151,8 @@ accurate results for the data analysis.
 
 # The Logistic Regression Code
 # Create new binary columns for 'Male' and 'Female'
-cardio['Male'] = (cardio['Sex'] == 'Male').astype(int)
-cardio['Female'] = (cardio['Sex'] == 'Female').astype(int)
+# cardio['Male'] = (cardio['Sex'] == 'Male').astype(int)
+# cardio['Female'] = (cardio['Sex'] == 'Female').astype(int)
 
 # Define the dependent variable (target) and independent variables (features)
 y = cardio['Heart_Disease']  # Dependent variable
