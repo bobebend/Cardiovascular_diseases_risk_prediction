@@ -162,27 +162,28 @@ Weighted Avg: This takes the average for each class weighted by the number of sa
 This model's ROC-AUC scores indicate good discriminatory ability, but its classification report suggests a need for improved precision in predicting Heart Disease. This indicates a potential for further refinement to enhance the model's performance, particularly in correctly identifying cases of Heart Disease.
 
 # Feature Importance Graph:
-While there is a statistical significance between the consumption features and those with and without heart disease, they may not be reliable indicators for who will have heart disease solely based on their consumption patterns.
-
-This kind of situation is not uncommon in data analysis. Some variables might show statistical significance in isolation but might not hold strong predictive power when considered in the context of a more complex model. This is why it's important to consider multiple aspects of feature analysis, including statistical tests and predictive model results, to get a better understanding of how different factors contribute to the outcome.
-
 Below, I have a Feature Importance Plot I made based on my linear regression. In the middle of the graph it shows Fruit, Fried Potato and Green Vegetable Consumption as having very little influence as a predictor of Heart Disease. Alcohol Consumption, with it's small red bar, shows it predicts a decreased the risk of Heart Disease slightly.
 
-So what does this mean? Basically, in this data, what you consume in the four categries does not significantly influence if you will get Heart Disease or not as compared to the other categories. For example, other features such as General Poor health, gender, and the presence of diabetes are much stronger indicators of an incresed risk of heart disease. By contrast Very Good General Health and frequent Checkups help lower the risk of Heart Disease and, by extension, early prevention may reduce the risk of Heart Disease as well.
+So what does this mean? Basically, in this data, what you consume from in the four consumption categories does not significantly indicate if you will get Heart Disease or not as compared to the other categories. For example, other features such as General Poor health, gender, and the presence of diabetes are much stronger indicators of an incresed risk of heart disease. By contrast Very Good General Health and frequent Checkups help lower the risk of Heart Disease and, by extension, early prevention/detection.
 
-While the four consumable categories may not play a large roll in this data, what you eat does affect categories like BMI or Diabetes which do have more significant importance on this plot.
+While the four consumable categories may not play a large roll in this data, what you eat does affect categories like BMI or Diabetes which do have more significant importance on this plot. I would have liked to see a greater variety of consumption categories to see if there would be a difference in the results.
 
 
 ![Feature_Importance](images/Feature_Importance.png)
+
+# Summary:
+While there is a statistical significance between the consumption features and those with and without heart disease, they may not be reliable indicators for who will have heart disease solely based on their consumption patterns.
+
+This kind of situation is not uncommon in data analysis. Some variables might show statistical significance in isolation but might not hold strong predictive power when considered in the context of a more complex model. This is why it's important to consider multiple aspects of feature analysis, including statistical tests and predictive model results, to get a better understanding of how different factors contribute to the outcome.
 
 
 
 
 # Annex:
 ## Additional graphs
-![Histogram_All_Columns]images/Hist_Columns.png
+![Histogram_All_Columns](images/Hist_Columns.png)
 
-![Correlation_Heatmap]images/Correlation_Heatmap.png
+![Correlation_Heatmap](images/Correlation_Heatmap.png)
 
 
 
