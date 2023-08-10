@@ -42,9 +42,10 @@ With these results I rejected my Null Hypothesis and accepted my Alternate Hypth
 I chose Logistic regression due to Heart Disease being yes/no (binary) instead of continuous.
 
 ## How I changed the data
-I started with 12 object columns and 7 float columns. I needed to change the types to something more useful. Below are the steps I used in order/
+I started with 12 object columns and 7 float columns. I needed to change the types to something more useful. Below are the steps I used in order.
 
 -Changed the Sex column to binary with yes=1 and no-0. 
+--I added the columns Male and Female. Next I dropped the Sex column and Female column 
 
 -Changed columns 'Heart_Disease', 'Exercise', 'Skin_Cancer', 'Other_Cancer', 'Depression', 'Arthritis', 'Smoking_History' which had yes/no data to 1=yes and 0=no 
 
@@ -64,10 +65,10 @@ I set the test size to 0.2 and the random state to 42.
 
 ### Scaling
 The X_train was scaled, fitted to the model.
-The X_test was scaled only.
+The X_test was scaled.
 
 ### The Regression
-I used the Logistic Regression with a random state of 42 using the default threshold of 0.5
+Used Logical Regression
 
 ### Cross-validation
 Cross validation was used with 10 K-Folds to train the testing model. Scoring used the 
