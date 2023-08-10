@@ -4,13 +4,13 @@ Dataset on Kaggle.com: https://www.kaggle.com/datasets/alphiree/cardiovascular-d
 GitHub Repository: https://github.com/bobebend/Cardiovascular_diseases_risk_prediction
 
 # Disclaimer:
-This analysis is not intended to provide any medical advice of any kind. It is simply an analysis of a dataset. 
+This analysis is not intended to provide any medical advice of any kind. It is simply an analysis of this dataset. 
 
 # Why This Dataset
-Eating healthy has long been linked with a reduction in various ailments. With this dataset I was able to explore whether there is statistical significance between heart disease and Alcohol Consumption, Fruit Consumption, Green Vegatable Consumption, and Fried Potato Consumption consuming certain foods. The food columns in the data encompass general categories of food, including alcohol, and are not intended to highlight any specific food or diet. My goal is simply to determine if what is consumed has an impact on a person having heart disease.
+Eating healthy has long been linked with a reduction in various ailments. With this dataset I was able to explore whether there is statistical significance between Heart Disease and Alcohol Consumption, Fruit Consumption, Green Vegatable Consumption, and Fried Potato Consumption consuming certain foods. The food columns in the data encompass general categories of food, including alcohol, and are not intended to highlight any specific food or diet. My goal is simply to determine if what is consumed in this dataset has an impact on a person having heart disease or not.
 
 # The Data
-The dataset use contained 308,854 rows with 19 columns. 
+This dataset contained 308,854 rows with 19 columns. 
 
 There were 80 duplicate rows. I chose to leave the duplicates in since many of the columns were yes/no or some type of answer with a limited range. I expected by chance some of the rows would be the same, and a few were.
 
@@ -27,9 +27,9 @@ Below is a graph of the features of interest.
 # Hypothesis Test
 My hypothesis test is reasonably straight forward:
 
-Null Hypothesis (H0): There is no significant association between the category (alcohol consumption, fruit consumption, green vegetable consumption, fried potato consumption) and the presence of Heart Disease.
+Null Hypothesis (H0): There is no significant association between the categories alcohol consumption, fruit consumption, green vegetable consumption, fried potato consumption and the presence of Heart Disease.
 
-Alternative Hypothesis (Ha): There is a significant association between the category (alcohol consumption, fruit consumption, green vegetable consumption, fried potato consumption) and the presence of Heart Disease. 
+Alternative Hypothesis (Ha): There is a significant association between the categories alcohol consumption, fruit consumption, green vegetable consumption, fried potato consumption and the presence of Heart Disease. 
 
 ## Testing the Hypothesis
 I used the Mann-Whitney U test to check my hypotesis. I checked heart disease yes and no against each of the four columns: alcohol consumption, fruit consumption, green vegetable consumption, fried potato consumption. For the test I used an alpha of 0.05. The results are listed below and show a statistically significant difference between the consumption categories and individuals with and without heart disease. The extemely small P Values indicates strong evidence against the null hypothesis.
@@ -58,7 +58,7 @@ I started with 12 object columns and 7 float columns. I needed to change the typ
 -Changed the columns 'General Health' , 'Diabetes', and 'Checkup' from object to binary columns with get-dummies.
 
 -The Age_Category contained two, two digit ages seperated by a hypen (70-74), and the oldest age as 80+.
-I used split to remove the hypen and took the mean of the two numbers. 
+I used split to remove the hypens and took the mean of the two numbers. 
 --For to 80+ category I replaced it with a best guess average top age of 85 since there is no upper limit to the age category. 
 
 -This left me a dataset which contained integers and floats.
