@@ -37,10 +37,12 @@ I used the Mann-Whitney U test to check my hypotesis. I checked heart disease ye
 2  Green_Vegetables_Consumption           Yes    3.340435e+09  3.777408e-52
 3       FriedPotato_Consumption           Yes    3.368543e+09  1.863347e-39
 
+![Mann Whitney U Results Table](images/Mann_Whitney_U_results_table.png)
+
 With these results I rejected my Null Hypothesis and accepted my Alternate Hypthesis.
 
 # Logistic Regression
-I chose Logistic regression due to Heart Disease being yes/no (binary) instead of continuous.
+Logistic regression was selected due to Heart Disease being yes/no (binary) instead of continuous.
 
 ## How I changed the data
 I started with 12 object columns and 7 float columns. I needed to change the types to something more useful. Below are the steps I used in order.
@@ -48,15 +50,15 @@ I started with 12 object columns and 7 float columns. I needed to change the typ
 -Changed the Sex column to binary with yes=1 and no-0. 
 --I added the columns Male and Female. Next I dropped the Sex column and Female column 
 
--Changed columns 'Heart_Disease', 'Exercise', 'Skin_Cancer', 'Other_Cancer', 'Depression', 'Arthritis', 'Smoking_History' which had yes/no data to 1=yes and 0=no 
+-Changed columns 'Heart_Disease', 'Exercise', 'Skin_Cancer', 'Other_Cancer', 'Depression', 'Arthritis', 'Smoking_History' which were yes/no data to 1=yes and 0=no 
 
 -Changed the columns 'General Health' , 'Diabetes', and 'Checkup' from object to binary columns with get-dummies.
 
 -The Age_Category contained two, two digit ages seperated by a hypen (70-74), and the oldest age as 80+.
 I used split to remove the hypen and took the mean of the two numbers. 
---For to 80+ category I replaced it with a best guess average of 85 since there is no upper limit to the age category.
+--For to 80+ category I replaced it with a best guess average top age of 85 since there is no upper limit to the age category. 
 
--This left me a dataset which contained integers and floats..
+-This left me a dataset which contained integers and floats.
 
 ## The Logistic Regression steps
 
@@ -73,17 +75,18 @@ Used logreg regression with class weight balanced to account for the imbalance b
 
 ### Cross-validation
 Cross validation was used with 10 K-Folds to train the testing model. Scoring used the 
-Receiver Operating Characteristic - Area Under Curve (roc-auc) to evaluate the models performance.
+Receiver Operating Characteristic - Area Under Curve (ROC-AUC) to evaluate the models performance.
 
 ### ROC-AUC
-the roc-auc scores were then averaged
+The ROC-AUC scores were then averaged for each fold and were then run on the testing data.
 
 ### Prediction
-I set the threshold variable to 0.5 and ran the predictions.
+I set the threshold variable to 0.5 and ran the predictions. I found 0.5 provided the most reasonable results.
 
 # Results of the Logistic Regression
 ## The Confusion Matrix
-![Confusion Matrix](images/ConfusionMatrix.png)
+![Confusion Matrix](images/Confusion_Matrix.png)
+
 
                    Predicted Positive    Predicted Negative
 Actual Positive         True Positive           False Negative
@@ -91,23 +94,24 @@ Actual Negative         False Positive          True Negative
 
 I this case the Confusion Matrix breakdown explaination is as follows:
 
-Upper Left = 56443 (True - Negative) Instances correctly predicting Negative for Heart Disease
+Upper Left = 41811 (True - Negative) Instances correctly predicting Negative for Heart Disease, indicating a strong ability to identify non-cases.
 
-Upper Right = 331 (False Positive) Instances of predicting Heart Disease when actually negative
+Upper Right = 14963 (False Positive) Instances predicted as positive for Heart Disease, but were actually negative, are areas where this model may be overly sensitive.
 
-Lower Left = 4663 (False Negative) Instances of predicting no Heaart Disease when actually had Heart Disease
+Lower Left = 1070(False Negative) Instances of predicting no Heart Disease, but were actually positive, indicating potential missed cases.
 
-Lower Right = 334 (True Positive) Instances correctly predicting Positive for Heart Disease
+Lower Right = 3927 (True Positive) Instances correctly predicting Positive for Heart Disease
 
-
-
-
-
+Overall, the model demonstrates high accuracy in correctly identifying non-cases (True Negatives), while it has a higher rate of false positives than true positives. The model's strength lies in minimizing false negatives, which is crucial in medical contexts.
 
 
 
 ## ROC Curve
-![ROC Curve](images/ROC_curve.png)
+The ROC Curve showed that my model was reasonable accurate with a .83 score.
+
+![ROC Curve](images/Final_ROC.png)
+![ROC Curve Data](images/Final_ROC_Data.png)
+
 
 ROC-AUC scores for each fold:
 [0.83581631 0.83996173 0.84231169 0.83711969 0.83089107 0.83413619
@@ -120,22 +124,31 @@ ROC-AUC on Testing Data: 0.84
 Classification Report on Testing Data:
               precision    recall  f1-score   support
 
-           0       0.92      0.99      0.96     56774
-           1       0.50      0.07      0.12      4997
+           0       0.98      0.74      0.84     56774
+           1       0.21      0.79      0.33      4997
 
-    accuracy                           0.92     61771
-   macro avg       0.71      0.53      0.54     61771
-weighted avg       0.89      0.92      0.89     61771
+    accuracy                           0.74     61771
+   macro avg       0.59      0.76      0.58     61771
+weighted avg       0.91      0.74      0.80     61771
 
 ## Let's Breakdown the Results
 ROC-AUC on Testing Data: 0.83 is the estimate of the model's performance on unseen data or the test set. This model is able to clearly distinguish between Heart Disease = 1 (positive) and Heart Disease = 0 (negative).
 
 ### Classification Data
-Precision: is the model's ability to correctly predict positives for Heart Disease (= 1) among the true positive cases. This model only predicts 50% of the predicted positives are true positive. Conversely, 92% of predicted negatives are true negatives.
+#### Precision: 
+Precision for class 0 (no Heart Disease) is high at 0.98, indicating that when the model predicts no Heart Disease, it is usually correct.
 
-Recall: 0.07 for positive rates indicates this model is only correctly identifying 7% of the actual positive instances.
+Precision for class 1 (Heart Disease) is lower at 0.21, suggesting that predictions of Heart Disease are often incorrect.
 
-F1-Score: Is the harmonic mean of precission and recall. This indicates a 12% accuracy for Heart Disease positive cases and a 96% accuracy for negative cases.
+#### Recall: 
+Recall for class 0 is 0.74, indicating that the model captures a substantial proportion of actual no Heart Disease instances.
+
+Recall for class 1 is high at 0.79, highlighting the model's ability to identify a significant portion of actual Heart Disease cases.
+
+#### F1-Score: 
+The F1-score for class 1 is relatively low at 0.33, reflecting a trade-off between precision and recall.
+
+The weighted average F1-score is 0.80, indicating a reasonable balance between precision and recall across classes.
 
 Support: This is the number of samples in each class in the testing data. 
 
@@ -143,14 +156,19 @@ Macro Avg: Takes the average for each class without considering the class imbala
 
 Weighted Avg: This takes the average for each class weighted by the number of samples in each class.
 
-Remember, the ROC curve is an example of how well the model preformed regardless of the threshold set. In this case it performed well on testing data 84% of the time.
+This model's ROC-AUC scores indicate good discriminatory ability, but its classification report suggests a need for improved precision in predicting Heart Disease. This indicates a potential for further refinement to enhance the model's performance, particularly in correctly identifying cases of Heart Disease.
+
+
+![Feature_Importance](images/Feature_Importance.png)
 
 
 
 
-![Feature_Importance]images\Feature_Importance.png
+# Annex:
+## Additional graphs
+![Histogram_All_Columns]images/Hist_Columns.png
 
-
+![Correlation_Heatmap]images/Correlation_Heatmap.png
 
 
 
