@@ -6,7 +6,7 @@ Dataset on Kaggle.com: https://www.kaggle.com/datasets/alphiree/cardiovascular-d
 # Why This Dataset
 Eating healthy has long been linked with a reduction in various ailments. With this dataset I was able to explore whether there is statistical significance between heart disease and Alcohol_Consumption, Fruit_Consumption, Green_Vegatable_Consumption, and FriedPotato_Consumption consuming certain foods. The food columns in the data encompass general categories of food, including alcohol, and are not intended to highlight any specific food or diet in particular. My goal is simply to determine if what is consumed has an impact on a person having heart disease.
 
-# The Data
+# The DataS
 The dataset use contained 308,854 rows with 19 columns. 
 
 There were 80 duplicate row. I chose to leave the duplicates in since many of the columns were yes/no or some type of answer with a limited range. I expected by chance some of the rows would be the same, and a few were.
