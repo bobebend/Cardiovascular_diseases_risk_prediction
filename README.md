@@ -68,7 +68,7 @@ The X_train was scaled, fitted to the model.
 The X_test was scaled.
 
 ### The Regression
-Used Logical Regression
+Used logreg regression with class weight balanced to account for the imbalance between the Heart Disease Yes and No columns.
 
 ### Cross-validation
 Cross validation was used with 10 K-Folds to train the testing model. Scoring used the 
@@ -78,7 +78,7 @@ Receiver Operating Characteristic - Area Under Curve (roc-auc) to evaluate the m
 the roc-auc scores were then averaged
 
 ### Prediction
-The prediction was then run against the test model
+I set the threshold variable to 0.5 and ran the predictions.
 
 # Results of the Logistic Regression
 ## The Confusion Matrix
