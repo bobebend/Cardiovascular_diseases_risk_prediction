@@ -1,10 +1,13 @@
 # Cardiovascular_diseases_risk_prediction
-Original article: https://eajournals.org/ejcsit/wp-content/uploads/sites/21/2023/06/Integrated-Machine-Learning.pdf
-
 Dataset on Kaggle.com: https://www.kaggle.com/datasets/alphiree/cardiovascular-diseases-risk-prediction-dataset
 
+GitHub Repository: https://github.com/bobebend/Cardiovascular_diseases_risk_prediction
+
+# Disclaimer:
+This analysis is not intended to provide any medical advice of any kind. It is simply an analysis of a dataset. 
+
 # Why This Dataset
-Eating healthy has long been linked with a reduction in various ailments. With this dataset I was able to explore whether there is statistical significance between heart disease and Alcohol_Consumption, Fruit_Consumption, Green_Vegatable_Consumption, and FriedPotato_Consumption consuming certain foods. The food columns in the data encompass general categories of food, including alcohol, and are not intended to highlight any specific food or diet. My goal is simply to determine if what is consumed has an impact on a person having heart disease.
+Eating healthy has long been linked with a reduction in various ailments. With this dataset I was able to explore whether there is statistical significance between heart disease and Alcohol Consumption, Fruit Consumption, Green Vegatable Consumption, and Fried Potato Consumption consuming certain foods. The food columns in the data encompass general categories of food, including alcohol, and are not intended to highlight any specific food or diet. My goal is simply to determine if what is consumed has an impact on a person having heart disease.
 
 # The Data
 The dataset use contained 308,854 rows with 19 columns. 
@@ -12,9 +15,9 @@ The dataset use contained 308,854 rows with 19 columns.
 There were 80 duplicate rows. I chose to leave the duplicates in since many of the columns were yes/no or some type of answer with a limited range. I expected by chance some of the rows would be the same, and a few were.
 
 The columns are labeled as:
-General_Health, Checkup, Exercise, Heart_Disease, Skin_Cancer, Other_Cancer, Depression, Diabetes, Arthritis, Sex, Age_Category, Height(cm), Weight(kg), BMI, Smoking_History, Alcohol_Consumption, Fruit_Consumption, Green_Vegatable_Consumption, and FriedPotato_Consumption
+General Health, Checkup, Exercise, Heart Disease, Skin Cancer, Other Cancer, Depression, Diabetes, Arthritis, Sex, Age Category, Height(cm), Weight(kg), BMI, Smoking History, Alcohol Consumption, Fruit Consumption, Green Vegatable Consumption, and Fried Potato Consumption.
 
-The columns of interest in this research are: Heart_Disease, Alcohol_Consumption, Fruit_Consumption, Green_Vegatable_Consumption, and FriedPotato_Consumption.
+The columns of interest in this research are: Heart Disease, Alcohol Consumption, FruitConsumption, Green Vegatable Consumption, and Fried Potato Consumption.
 
 Below is a graph of the features of interest.
 ![Histogram, Categories of Interest](images/Hist_Heart_and_Consumpt.png)
@@ -29,7 +32,7 @@ Null Hypothesis (H0): There is no significant association between the category (
 Alternative Hypothesis (Ha): There is a significant association between the category (alcohol consumption, fruit consumption, green vegetable consumption, fried potato consumption) and the presence of Heart Disease. 
 
 ## Testing the Hypothesis
-I used the Mann-Whitney U test to check my hypotesis. I checked heart disease yes and no against each of the four columns: alcohol consumption, fruit consumption, green vegetable consumption, fried potato consumption. For the test I used an alpha of 0.05. The results are listed below and are statistically significant with very small P_Values.
+I used the Mann-Whitney U test to check my hypotesis. I checked heart disease yes and no against each of the four columns: alcohol consumption, fruit consumption, green vegetable consumption, fried potato consumption. For the test I used an alpha of 0.05. The results are listed below and show a statistically significant difference between the consumption categories and individuals with and without heart disease. The extemely small P Values indicates strong evidence against the null hypothesis.
 
                        Category Heart_Disease  Mann_Whitney_U       P_Value
 0           Alcohol_Consumption           Yes    3.006144e+09  0.000000e+00
@@ -157,6 +160,17 @@ Macro Avg: Takes the average for each class without considering the class imbala
 Weighted Avg: This takes the average for each class weighted by the number of samples in each class.
 
 This model's ROC-AUC scores indicate good discriminatory ability, but its classification report suggests a need for improved precision in predicting Heart Disease. This indicates a potential for further refinement to enhance the model's performance, particularly in correctly identifying cases of Heart Disease.
+
+# Feature Importance Graph:
+While there is a statistical significance between the consumption features and those with and without heart disease, they may not be reliable indicators for who will have heart disease solely based on their consumption patterns.
+
+This kind of situation is not uncommon in data analysis. Some variables might show statistical significance in isolation but might not hold strong predictive power when considered in the context of a more complex model. This is why it's important to consider multiple aspects of feature analysis, including statistical tests and predictive model results, to get a better understanding of how different factors contribute to the outcome.
+
+Below, I have a Feature Importance Plot I made based on my linear regression. In the middle of the graph it shows Fruit, Fried Potato and Green Vegetable Consumption as having very little influence as a predictor of Heart Disease. Alcohol Consumption, with it's small red bar, shows it predicts a decreased the risk of Heart Disease slightly.
+
+So what does this mean? Basically, in this data, what you consume in the four categries does not significantly influence if you will get Heart Disease or not as compared to the other categories. For example, other features such as General Poor health, gender, and the presence of diabetes are much stronger indicators of an incresed risk of heart disease. By contrast Very Good General Health and frequent Checkups help lower the risk of Heart Disease and, by extension, early prevention may reduce the risk of Heart Disease as well.
+
+While the four consumable categories may not play a large roll in this data, what you eat does affect categories like BMI or Diabetes which do have more significant importance on this plot.
 
 
 ![Feature_Importance](images/Feature_Importance.png)
