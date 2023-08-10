@@ -118,7 +118,9 @@ for number in cardio['Age_Category']:
 # cardio = cardio.drop(columns = 'Age_Category')
 
 '''
+
 Due to the last age group being 80+ with no upper limit I guessed and 
+
 put the highest age at 85. This my impact things at the highest age range
 '''
 cardio['Average_Age'] = Average_Age
@@ -129,7 +131,13 @@ This is the Logistic Regression Code
 
 I detailed in the code what my steps at each section were
 
-I am using this doc string to make it easier to fong this section
+I am using this doc string to make it easier to find this section
+
+This is also the final copy of all the Regressions I performed with everything in
+
+including spliting the Sex category in to Male and Female. This should give the most 
+
+accurate results for the data analysis. 
 '''
 
 # The Logistic Regression Code
