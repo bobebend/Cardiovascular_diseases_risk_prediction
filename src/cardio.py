@@ -103,7 +103,7 @@ cardio['Male'] = (cardio['Sex'] == 1).astype(int)
 cardio['Female'] = (cardio['Sex'] == 0).astype(int)
 
 # Drop the original 'Sex' column
-cardio.drop(columns=['Sex'], inplace=True)
+# cardio.drop(columns=['Sex'], inplace=True)
 
 # Verify the counts in 'Male' and 'Female' columns
 print(cardio['Male'].value_counts())
