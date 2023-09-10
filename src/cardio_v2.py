@@ -243,4 +243,9 @@ def cardio_pipeline(filepath, lst_of_columns, alpha):
     feature_importance(X, y)
 
 if __name__ == "__main__": 
-    pass
+    columns = ['Alcohol_Consumption', 
+           'Fruit_Consumption', 
+           'Green_Vegetables_Consumption', 
+           'FriedPotato_Consumption']
+    alpha = 0.05
+    cardio_pipeline('../data/Cardiovascular_cleaned.csv', columns, alpha)
